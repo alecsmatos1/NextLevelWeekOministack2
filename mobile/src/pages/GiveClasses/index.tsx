@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, Text} from 'react-native';
+import { View, ImageBackground, Text, Linking} from 'react-native';
 
 import GiveClassesBgImages from '../../assets/images/give-classes-background.png';
 
@@ -17,7 +17,11 @@ function GiveClasses(){
         <ImageBackground resizeMode='contain' style={styles.content} source={GiveClassesBgImages}>
             <Text style={styles.title}>Quer ser um proffy?</Text>
             <Text style={styles.description}>
-                Para começar, você precisa se cadastrar como professor na nossa platarfoma web.
+                Para começar, você precisa se cadastrar como professor na nossa platarfoma web. 
+                <Text style={{color: 'blue'}}
+                    onPress={() => Linking.openURL('http://google.com')}>
+                    {'\n'}Plataforma de Cadastro.
+                </Text>
                 </Text>
         </ImageBackground>
 

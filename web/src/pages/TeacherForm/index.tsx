@@ -20,22 +20,25 @@ function TeacherForm(){
 
     const [subject, setSubject] = useState('');
     const [cost, setCost] = useState('');
-    
+    const [weekId, setWeekID] = useState(7);
 
 
     const [scheduleItems, setScheduleItems] = useState([
         {  week_day: 0, from: '',to: '' }
     ]);
+    
     function addNewScheduleItem(){
         setScheduleItems([
             ...scheduleItems,
-            {  week_day: 0, from: '',to: '' }
+            {  week_day: weekId, from: '',to: '' }
         ]);
+        setWeekID(weekId + 1);
     }
 
     function setScheduleItemValue(position: number, field:string, value:string ){
         const updatedScheduleItems = scheduleItems.map((scheduleItem, index) => {
             if(index === position){
+                if(scheduleItem.week_day > 6){scheduleItem.week_day = 0}; 
                 return {...scheduleItem, [field]: value };
             }
             return scheduleItem;
